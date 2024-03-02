@@ -56,12 +56,21 @@ app.UseAuthorization();
 //    // Call the next delegate/middleware in the pipeline
 //    await next();
 //});
+//app.Run(async context =>
+//{
+//    await context.Response.WriteAsync("Hello from the 1nd delegate.");
+//});
+app.Use(async (context, next) =>
+{
+    Console.WriteLine($"Logic before executing the next delegate in the Use method");
+    await next.Invoke();
+    Console.WriteLine($"Logic after executing the next delegate in the Use method");
+});
 app.Run(async context =>
 {
-    await context.Response.WriteAsync("Hello from the 1nd delegate.");
+    Console.WriteLine($"Writing the response to the client in the Run method");
+    await context.Response.WriteAsync("Hello from the middleware component.");
 });
-
-
 
 app.MapControllers();
 
