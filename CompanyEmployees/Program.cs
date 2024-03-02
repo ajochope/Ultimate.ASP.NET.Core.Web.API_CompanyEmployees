@@ -1,6 +1,8 @@
 using CompanyEmployees.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.EntityFrameworkCore;
 using NLog;
+using Repository;
 using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,9 +24,11 @@ builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 
 // Add services to the container.
-
 builder.Services.AddControllers();
 
+// SQL server connection
+//builder.Services.AddDbContext<RepositoryContext>(options => 
+//    options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
 
 var app = builder.Build();
 
