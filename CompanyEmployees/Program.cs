@@ -1,5 +1,6 @@
 using CompanyEmployees.Extensions;
 using Microsoft.AspNetCore.HttpOverrides;
+using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -47,6 +48,20 @@ app.UseCors("CorsPolicy");
 app.UseCors("CorsPolicy");
 
 app.UseAuthorization();
+
+//below the UseAuthorization part create a first middleware component
+//app.Use(async (context, next) =>
+//{
+//    await context.Response.WriteAsync("Hello from the middleware component.");
+//    // Call the next delegate/middleware in the pipeline
+//    await next();
+//});
+app.Run(async context =>
+{
+    await context.Response.WriteAsync("Hello from the 1nd delegate.");
+});
+
+
 
 app.MapControllers();
 
