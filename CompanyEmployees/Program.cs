@@ -40,7 +40,8 @@ builder.Services.AddControllers(config => {
             config.RespectBrowserAcceptHeader = true;
             config.ReturnHttpNotAcceptable = true;
         }).AddXmlDataContractSerializerFormatters()
-        .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
+          .AddCustomCSVFormatter()
+          .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 
 // SQL server connection
 builder.Services.ConfigureSqlContext(builder.Configuration);

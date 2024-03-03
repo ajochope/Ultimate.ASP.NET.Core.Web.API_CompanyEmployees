@@ -34,6 +34,9 @@ namespace CompanyEmployees.Extensions
         // Service manager
         public static void ConfigureServiceManager(this IServiceCollection services) =>
             services.AddScoped<IServiceManager, ServiceManager>();
+        // OutputFormatters
+        public static IMvcBuilder AddCustomCSVFormatter(this IMvcBuilder builder) =>
+            builder.AddMvcOptions(config => config.OutputFormatters.Add(new CsvOutputFormatter()));
         // Sql server connection
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddSqlServer<RepositoryContext>((configuration.GetConnectionString("sqlConnection")));
