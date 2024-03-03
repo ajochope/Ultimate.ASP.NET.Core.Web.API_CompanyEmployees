@@ -35,6 +35,12 @@ builder.Services.ConfigureServiceManager();
 // Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
 
+// Enable the server to format the XML
+builder.Services.AddControllers(config => {
+            config.RespectBrowserAcceptHeader = true;
+        }).AddXmlDataContractSerializerFormatters()
+        .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
+
 // SQL server connection
 builder.Services.ConfigureSqlContext(builder.Configuration);
 
