@@ -24,7 +24,9 @@ builder.Services.ConfigureIISIntegration();
 builder.Services.ConfigureLoggerService();
 
 // Add services to the container.
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+                .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
+
 
 //Repository pattern separating the logic from model
 builder.Services.ConfigureRepositoryManager();
