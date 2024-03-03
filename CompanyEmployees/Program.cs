@@ -26,6 +26,11 @@ builder.Services.ConfigureLoggerService();
 // Add services to the container.
 builder.Services.AddControllers();
 
+//Repository pattern separating the logic from model
+builder.Services.ConfigureRepositoryManager();
+//encapsulates the registration of all service classes togehter in a service manager
+builder.Services.ConfigureServiceManager();
+
 // SQL server connection
 //builder.Services.AddDbContext<RepositoryContext>(options => 
 //    options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
