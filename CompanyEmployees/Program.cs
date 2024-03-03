@@ -1,4 +1,5 @@
 using CompanyEmployees.Extensions;
+using Contracts;
 using LoggerService;
 using Microsoft.AspNetCore.HttpOverrides;
 using NLog;
@@ -41,15 +42,14 @@ var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 
+// Configure an exception handler
+var logger = app.Services.GetRequiredService<ILoggerManager>();
+app.ConfigureExceptionHandler(logger);
+
 //handling exceptions and HTTP Strict Transport Security (HSTS)
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage();
-}
-else
-{
+if (app.Environment.IsProduction())
     app.UseHsts();
-}
+
 //automatically redirects HTTP requests to HTTPS
 app.UseHttpsRedirection();
 
