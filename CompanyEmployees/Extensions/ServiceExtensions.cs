@@ -26,7 +26,7 @@ namespace CompanyEmployees.Extensions
         // Logger service
         public static void ConfigureLoggerService(this IServiceCollection services)
         {
-            services.AddSingleton<LoggerService.ILoggerManager, LoggerManager>();
+            services.AddSingleton<ILoggerManager, LoggerManager>();
         }
         // Repository manager
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
