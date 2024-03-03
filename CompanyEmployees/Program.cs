@@ -2,6 +2,8 @@ using CompanyEmployees.Extensions;
 using Contracts;
 using LoggerService;
 using Microsoft.AspNetCore.HttpOverrides;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using NLog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -21,6 +23,12 @@ builder.Services.ConfigureIISIntegration();
 
 // Logger service
 builder.Services.ConfigureLoggerService();
+
+//  Validation to enable our custom responses from the actions
+builder.Services.Configure<ApiBehaviorOptions>(options =>
+{
+    options.SuppressModelStateInvalidFilter = true;
+});
 
 // Add services to the container.
 builder.Services.AddControllers()
