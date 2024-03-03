@@ -32,8 +32,7 @@ builder.Services.ConfigureRepositoryManager();
 builder.Services.ConfigureServiceManager();
 
 // SQL server connection
-//builder.Services.AddDbContext<RepositoryContext>(options => 
-//    options.UseSqlServer(builder.Configuration.GetConnectionString("sqlConnection")));
+builder.Services.ConfigureSqlContext(builder.Configuration);
 
 var app = builder.Build();
 
