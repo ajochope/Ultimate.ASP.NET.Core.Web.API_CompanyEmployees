@@ -1,9 +1,7 @@
 using CompanyEmployees.Extensions;
+using LoggerService;
 using Microsoft.AspNetCore.HttpOverrides;
-using Microsoft.EntityFrameworkCore;
 using NLog;
-using Repository;
-using System.ComponentModel;
 
 var builder = WebApplication.CreateBuilder(args);
 
