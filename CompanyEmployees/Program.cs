@@ -25,11 +25,14 @@ builder.Services.ConfigureLoggerService();
 builder.Services.AddControllers()
                 .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 
-
-//Repository pattern separating the logic from model
+// Repository pattern separating the logic from model
 builder.Services.ConfigureRepositoryManager();
-//encapsulates the registration of all service classes togehter in a service manager
+
+// Encapsulates the registration of all service classes togehter in a service manager
 builder.Services.ConfigureServiceManager();
+
+// Register AutoMapper
+builder.Services.AddAutoMapper(typeof(Program));
 
 // SQL server connection
 builder.Services.ConfigureSqlContext(builder.Configuration);
@@ -61,7 +64,6 @@ app.UseForwardedHeaders(new ForwardedHeadersOptions
 });
 
 app.UseCors("CorsPolicy");
-
 
 // User CORS policy
 app.UseCors("CorsPolicy");
