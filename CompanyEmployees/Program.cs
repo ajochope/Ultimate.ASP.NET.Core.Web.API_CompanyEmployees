@@ -38,6 +38,7 @@ builder.Services.AddAutoMapper(typeof(Program));
 // Enable the server to format the XML
 builder.Services.AddControllers(config => {
             config.RespectBrowserAcceptHeader = true;
+            config.ReturnHttpNotAcceptable = true;
         }).AddXmlDataContractSerializerFormatters()
         .AddApplicationPart(typeof(CompanyEmployees.Presentation.AssemblyReference).Assembly);
 
