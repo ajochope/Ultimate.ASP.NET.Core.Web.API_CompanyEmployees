@@ -1,4 +1,5 @@
 using CompanyEmployees.Extensions;
+using CompanyEmployees.Presentation.ActionFilters;
 using Contracts;
 using LoggerService;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -50,6 +51,9 @@ builder.Services.ConfigureServiceManager();
 
 // Register AutoMapper
 builder.Services.AddAutoMapper(typeof(Program));
+
+// register register action filter
+builder.Services.AddScoped<ValidationFilterAttribute>();
 
 // Enable the server to format the XML
 builder.Services.AddControllers(config => {
