@@ -4,7 +4,6 @@ namespace Service.Contracts
 {
     public interface ICompanyService
     {
-
         // Async Code
         Task<IEnumerable<CompanyDto>> GetAllCompaniesAsync(bool trackChanges);
         Task<CompanyDto> GetCompanyAsync(Guid companyId, bool trackChanges);

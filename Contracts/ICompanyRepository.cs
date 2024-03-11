@@ -17,6 +17,5 @@ namespace Contracts
 
         //void CreateCompany(Company company);
         void DeleteCompany(Company company);
-
     }
 }
